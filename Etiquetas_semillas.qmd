@@ -1,0 +1,121 @@
+---
+title: "ETIQUETAS DE SEMILLAS DE HABAS"
+author: "Arista Fernandez, Perez Campos, Tomapasca Lopez, Vega Chavez y Vilchez Bustamante"
+format:
+  html:
+   toc: true
+   toc-location: left
+   embed-resources: true
+   number-sections: true
+   output-file: index
+   theme: darkly
+editor_options: 
+  chunk_output_type: console
+---
+
+ELABORACION DE ETIQUETAS 
+```{r}
+# Cargar librerías necesarias
+library(googlesheets4)
+library(dplyr)
+library(huito)
+
+# Autenticarse en Google Sheets
+gs4_auth()
+
+# Leer los datos desde Google Sheets
+url <- "https://docs.google.com/spreadsheets/d/1X5wBN_FrxXZ-XCQjYROYdNjaJcSAwmeBk9zd66utBSI/edit?usp=sharing"
+gs <- as_sheets_id(url)
+fb <- range_read(gs, sheet = "fb")
+```
+
+DEFINIR TRATAMIENTOS
+```{r}
+con_luz <- c(102, 103, 106, 108, 111, 112)
+sin_luz <- c(101, 104, 105, 107, 109, 110)
+font <- c("Courgette", "Tillana")
+huito_fonts(font)
+```
+
+```{r}
+label <- fb %>%
+  rename(scientific.name = FACTOR, name = PLOTS) %>%
+  mutate(
+    tratamiento = case_when(
+      name %in% con_luz ~ "CON LUZ",
+      name %in% sin_luz ~ "SIN LUZ",
+      TRUE ~ ""
+    ),
+    color_tratamiento = case_when(
+      tratamiento == "CON LUZ" ~ "darkblue",
+      tratamiento == "SIN LUZ" ~ "black",
+      TRUE ~ "black"
+    ),
+    color_numero = color_tratamiento,
+    number = row_number(),
+    barcode = paste(number, gsub("(\\w+\\s+\\w+).*", "\\1", scientific.name), sep = "_"),
+    barcode = gsub(" ", "-", barcode)
+  ) %>%
+  label_layout(size = c(9, 6), border_color = "darkgreen") %>%
+```
+
+```{r}
+# Incluir imágenes
+  include_image(
+    value = "https://drive.google.com/uc?export=view&id=1saNYKk0nO96bVjHhExjAdtt07Iiu0SFb",
+    size = c(4.6, 4.3),
+    position = c(0.68, 3.78)
+  ) %>%
+  include_image(
+    value = "https://drive.google.com/uc?export=view&id=1EBOKCdj2MG_b7oCumjf_Hda6GAHIHjwi",
+    size = c(5, 1),
+    position = c(2.55, 0.55)
+  ) %>%
+  include_image(
+    value = "https://drive.google.com/uc?export=view&id=16wJZmm-OVG3Cj512WUAfvgk-KZuiZkKN",
+    size = c(2, 2),
+    position = c(8.2, 4.92)
+  ) %>%
+  
+  # Incluir código de barras
+  include_barcode(
+    value = "barcode",
+    size = c(1.95,1.95),
+    position = c(8,0.95)
+  ) %>%
+```
+
+```{r}
+ # Textos principales
+  include_text(value = "Orden: Fabales", position = c(2.97, 3.8), size = 12, color = "black", opts = list(hjust = 0)) %>%
+  include_text(value = "Familia: Fabaceae", position = c(2.7, 2.99), size = 12, color = "black", opts = list(hjust = 0)) %>%
+  include_text(value = "Vicia faba", position = c(4.2, 5.5), size = 18, color = "black", font = font[1]) %>%
+  include_text(value = "Haba", position = c(4.2, 4.8), size = 16, color = "black", font = font[2]) %>%
+  
+  # Texto "CON LUZ" o "SIN LUZ" al lado del código QR
+  include_text(
+    value = "tratamiento",
+    position = c(5.27, 0.3),
+    size = 13,
+    color = "color_tratamiento",
+    font = font[2],
+    opts = list(hjust = 0)
+  ) %>%
+  
+  # Número de parcela (rotado vertical) al lado derecho con mismo color
+  include_text(
+    value = "name",
+    position = c(8.5, 2.8),
+    size = 16,
+    color = "color_numero",
+    angle = 90,
+    font = font[2]
+  )
+
+# Vista previa
+label %>% label_print(mode = "preview")
+
+# Exportar a PDF con 12 etiquetas por página
+label %>% label_print(mode = "complete", filename = "etiquetas", nlabel = 12)
+```
+
