@@ -42,6 +42,12 @@ El experimento se llevó a cabo utilizando 12 recipientes plásticos, divididos 
 Cada recipiente contenía 25 semillas, dispuestas sobre una capa de papel toalla que actuó como sustrato absorbente, permitiendo mantener la humedad adecuada para la germinación. La hidratación se realizó utilizando agua tratada con sulfato de cobre (2.2 g/L), lo cual permitió prevenir el desarrollo de microorganismos indeseados. El agua fue aplicada con una jeringa de 30 ml, asegurando una dosificación precisa y uniforme en todos los recipientes.
 
 Las semillas fueron evaluadas diariamente desde el día 0 hasta el día 8, registrando de manera continua la aparición de signos de germinación y cualquier cambio relevante en su desarrollo. Durante este período, se controló cuidadosamente el nivel de humedad y se mantuvieron constantes las condiciones ambientales, lo que permitió observar de forma clara el efecto de los dos tratamientos de luz sobre el comportamiento germinativo de las semillas.
+`
+
+# RESULTADOS 
+
+
+
 ```{r}
 library(magick)
 
@@ -51,10 +57,7 @@ download.file(url, destfile = "imagen.jpg", mode = "wb")
 
 img <- image_read("imagen.jpg")
 plot(img)
-
 ```
-
-# RESULTADOS 
 
 # DISCUCION
 
