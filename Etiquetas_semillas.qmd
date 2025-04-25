@@ -117,7 +117,7 @@ drive_auth()
 img_id <- as_id("1lvoZzm2ssK89BEEADymyEiyJfv8YJJUF")
 drive_download(img_id, path = "imagen.jpg", overwrite = TRUE)
 img <- image_read("imagen.jpg")
-grid::grid.raster(img, width = unit(5, "inches"))
+grid::grid.raster(img, width = unit(3, "inches"))
 ```
 
 estadisticas
@@ -127,7 +127,7 @@ drive_auth()
 img_id <- as_id("1Y7fc_zzy-rK0VmX3Nq4xjOmMtmapYy1d")
 drive_download(img_id, path = "imagen2.jpg", overwrite = TRUE)
 img <- image_read("imagen2.jpg")
-grid::grid.raster(img, width = unit(5, "inches"))
+grid::grid.raster(img, width = unit(3, "inches"))
 ```
 
 grafico
