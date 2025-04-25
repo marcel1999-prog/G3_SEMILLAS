@@ -9,16 +9,19 @@ format:
    number-sections: true
    output-file: index
    theme: darkly
+   css: estilo.css
 editor_options: 
   chunk_output_type: console
 ---
 
 # INTRODUCCION
 
+La haba (*Vicia faba* L.) es una leguminosa originaria del centro y sur de Asia (Saavedra & Kehr, 2023). Es un cultivo anual que posee un tallo erecto y puede alcanzar altitudes de entre 1.5 a 2 m; (Arnaud & Georges, 2020); fue introducida en el continente americano en la época de la colonia en 1602 (Horque, 2004). En el Perú el cultivo de haba es de suma importancia; específicamente en la sierra del Perú; este cultivo se ha expandido en los últimos años hasta alcanzar un área de más de 34 000 ha (INIA - PERÚ, 2004). Solamente en agosto del 2024 la producción de habas alcanzó las 303 toneladas y se exportó a ocho países (Agraria.pe, 2024).
+En los últimos años se ha observado un gran crecimiento en la producción de habas debido a la alta demanda que esta generando; es por ello que se debe optimizar y perfeccionar las técnicas de producción especialmente analizando su comportamiento bajo diferentes condiciones de luz y oscuridad.
 
 # OBJETIVO
 
-## Analizar el efecto de la luminosidad y oscuridad en el proceso de germinación de semillas de haba (*Vicia faba* L.)
+Analizar el efecto de la luminosidad y oscuridad en el proceso de germinación de semillas de haba (*Vicia faba* L.)
 
 # MATERIALES Y METODOS
 
@@ -33,7 +36,7 @@ editor_options:
 - Pinza
 - Regla
 
-## Metodos
+## Metodología
 
 Las semillas de haba (*Vicia faba*) se consiguieron en el mercado modelo de la ciudad de Chachapoyas y fueron seleccionadas manualmente, priorizando aquellas que presentaban un buen tamaño y aspecto saludable.
 
@@ -41,24 +44,189 @@ El experimento se llevó a cabo utilizando 12 recipientes plásticos, divididos 
 
 Cada recipiente contenía 25 semillas, dispuestas sobre una capa de papel toalla que actuó como sustrato absorbente, permitiendo mantener la humedad adecuada para la germinación. La hidratación se realizó utilizando agua tratada con sulfato de cobre (2.2 g/L), lo cual permitió prevenir el desarrollo de microorganismos indeseados. El agua fue aplicada con una jeringa de 30 ml, asegurando una dosificación precisa y uniforme en todos los recipientes.
 
+Se realizaron etiquetas en RStudio para identificar de manera clara los dos tratamientos: "Luz" y "sin luz". Estas etiquetas permitieron realizar un seguimiento más organizado y preciso del comportamiento de cada grupo de semillas bajo sus respectivas condiciones de iluminación.
+
 Las semillas fueron evaluadas diariamente desde el día 0 hasta el día 8, registrando de manera continua la aparición de signos de germinación y cualquier cambio relevante en su desarrollo. Durante este período, se controló cuidadosamente el nivel de humedad y se mantuvieron constantes las condiciones ambientales, lo que permitió observar de forma clara el efecto de los dos tratamientos de luz sobre el comportamiento germinativo de las semillas.
 `
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(magick)
+
+# Nuevo ID del archivo de Google Drive
+file_id <- "1y92wmoJM0S6mBwTjIoI7AcvlWqg8NKhQ"
+
+# Construir la URL de descarga
+url <- sprintf("https://drive.google.com/uc?export=download&id=%s", file_id)
+
+# Descargar el archivo de imagen
+download.file(url, destfile = "imagen.jpg", mode = "wb")
+
+# Verifica que la imagen haya sido descargada
+if(file.exists("imagen.jpg")) {
+  img <- image_read("imagen.jpg")
+  plot(img)
+} else {
+  warning("La imagen no se descargó correctamente.")
+}
+
+```
+
+
 
 # RESULTADOS 
 
+La germinación en esta semilla durante los siete dias se puede ver que cumple con las caracteristicas de una semilla germinada correctamente. 
 
-
-```{r}
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 library(magick)
 
-file_id <- "1lXCwwtZlXTh9RtnpM79XbEL9-xbfWG1H"
-url <- sprintf("https://drive.google.com/uc?export=download&id=%s", file_id)
-download.file(url, destfile = "imagen.jpg", mode = "wb")
+mostrar_imagen <- function(file_id, nombre_archivo) {
+  url <- sprintf("https://drive.google.com/uc?export=download&id=%s", file_id)
+  download.file(url, destfile = nombre_archivo, mode = "wb")
+  if (file.exists(nombre_archivo)) {
+    img <- image_read(nombre_archivo)
+    plot(img)
+    title(main = nombre_archivo)
+  } else {
+    warning(sprintf("La imagen '%s' no se descargó correctamente.", nombre_archivo))
+  }
+}
 
-img <- image_read("imagen.jpg")
-plot(img)
+mostrar_imagen("1nbC1tntjVIHd_-CQd8x6OCU8-_Bx2N2o", "CON LUZ")
+mostrar_imagen("19QNUhM1dsV4OKJMSoxpoInQJIWKacAHx", "SIN LUZ")
+
 ```
 
-# DISCUCION
+**ORGANIZACION DE DATA**
+```{r}
+library(googlesheets4)
+gs4_auth()
+url <- "https://docs.google.com/spreadsheets/d/1gvrqWVp9w-1kKHM7veKj8Sqg_-hOZBKLM2JqJ4HsXzc/edit?usp=sharing"
+datos <- read_sheet(url)
+head(datos)
+```
+**GERMINABILIDAD**
 
+exploratorio 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(googledrive)
+library(magick)
+library(knitr)
+drive_auth()
+img_id <- as_id("1lvoZzm2ssK89BEEADymyEiyJfv8YJJUF")
+drive_download(img_id, path = "imagen.jpg", overwrite = TRUE)
+img <- image_read("imagen.jpg")
+grid::grid.raster(img)
+```
+
+estadisticas
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+drive_auth()
+img_id <- as_id("1Y7fc_zzy-rK0VmX3Nq4xjOmMtmapYy1d")
+drive_download(img_id, path = "imagen2.jpg", overwrite = TRUE)
+img <- image_read("imagen2.jpg")
+grid::grid.raster(img)
+```
+
+grafico
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+drive_auth()
+img_id <- as_id("1UblgawgRqZGmWfm42ez3RABEGmjoScEv")
+drive_download(img_id, path = "imagen3.jpg", overwrite = TRUE)
+img <- image_read("imagen3.jpg")
+grid::grid.raster(img)
+```
+
+
+**INDICE DE SINCRONIZACION**
+
+Exploratorio
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+drive_auth()
+img_id <- as_id("14erin8gC_OIFLwM_OFlemTYEHOPFYya7")
+drive_download(img_id, path = "imagen.jpg", overwrite = TRUE)
+img <- image_read("imagen.jpg")
+grid::grid.raster(img)
+```
+
+Estadisticas
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+drive_auth()
+img_id <- as_id("1FQ50pEDaJGWb4_YYIaRcF_6uFKi6uEm2")
+drive_download(img_id, path = "imagen.jpg", overwrite = TRUE)
+img <- image_read("imagen.jpg")
+grid::grid.raster(img)
+```
+
+Grafico
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+drive_auth()
+img_id <- as_id("1PDRAb91qU1q0LobhP_7xsG6Yw3MoGhBe")
+drive_download(img_id, path = "imagen.jpg", overwrite = TRUE)
+img <- image_read("imagen.jpg")
+grid::grid.raster(img)
+```
+
+
+**TIEMPO MEDIO DE GERMINACION**
+
+Exploratorio
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+drive_auth()
+img_id <- as_id("1Lna4yTQcsvxjozqEaO2Qa1hvyornnOTZ")
+drive_download(img_id, path = "imagen.jpg", overwrite = TRUE)
+img <- image_read("imagen.jpg")
+grid::grid.raster(img)
+```
+
+Estadisticas
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+drive_auth()
+img_id <- as_id("1gFZcJWDlx67_Pn3IxpPNu45zyj9NKfhP")
+drive_download(img_id, path = "imagen.jpg", overwrite = TRUE)
+img <- image_read("imagen.jpg")
+grid::grid.raster(img)
+```
+
+Grafico
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+drive_auth()
+img_id <- as_id("1o3IaCGIHL0_EThblAfX4FZTtpfNVGang")
+drive_download(img_id, path = "imagen.jpg", overwrite = TRUE)
+img <- image_read("imagen.jpg")
+grid::grid.raster(img)
+```
+
+
+**PORCENTAJE DE GERMINACION**
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+drive_auth()
+img_id <- as_id("1nkoMPvUjFgYPHrqG4MpaVnj3KGQzEU57")
+drive_download(img_id, path = "imagen4.jpg", overwrite = TRUE)
+img <- image_read("imagen4.jpg")
+grid::grid.raster(img)
+```
+
+
+
+# **DISCUSION**
+
+
+# **REFERENCIAS**
+
+- Agraria.pe. (03 de Octubre de 2024). Exportaciones peruanas de habas crecieron 44% en volumen en agosto. Obtenido de Agraria.pe: https://agraria.pe/noticias/exportaciones-peruanas-de-habas-crecieron-44-en-volumen-en-a-37215#:~:text=(Agraria.pe)%20Las%20exportaciones,igual%20mes%20del%20a%C3%B1o%20anterior.
+- Arnaud, R., & Georges, F. (24 de Abril de 2020). Descripción general de Bruchus rufimanus Boheman 1833 (Coleoptera: Chrysomelidae): Biología, ecología química y oportunidades semioquímicas en programas de manejo integrado de plagas. Obtenido de Los frijoles y los guisante: https://doi.org/10.1016/j.cropro.2020.105411
+- Horque, R. (Febrero de 2004). Cultivo del haba. Obtenido de INIA - Perú: https://repositorio.inia.gob.pe/server/api/core/bitstreams/715ee52d-6df5-4fdb-886f-f334bf6a8f99/content
+- INIA - PERÚ. (Junio de 2004). Haba INIA 401 - Cusco. Obtenido de INIA: https://repositorio.inia.gob.pe/server/api/core/bitstreams/b7cae603-cf90-42c8-8494-a3cae909a5d2/content
+- Lepri, A., Kazmi, H., Bertolotti, G., Longo, C., Occhigrossi, S., Quattrocchi, L., & De Vivo, M. (25 de Abril de 2024). Un bucle de retroalimentación entre giberelinas y represores transcripcionales DOF desempeña un papel crucial en la modulación de la germinación de semillas independiente de la luz. Obtenido de Science: https://doi.org/10.1016/j.xplc.2025.101262
+- Saavedra, G., & Kehr, E. (2023). Manejo y especies hortícolas aptas para la agroindustria en la Región de La Araucanía. Obtenido de INIA - Chile: https://hdl.handle.net/20.500.14001/68961 
 
