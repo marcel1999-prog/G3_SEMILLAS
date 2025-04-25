@@ -117,7 +117,7 @@ drive_auth()
 img_id <- as_id("1lvoZzm2ssK89BEEADymyEiyJfv8YJJUF")
 drive_download(img_id, path = "imagen.jpg", overwrite = TRUE)
 img <- image_read("imagen.jpg")
-grid::grid.raster(img, width = unit(3, "inches"))
+grid::grid.raster(img, width = unit(1.8, "inches"))
 ```
 
 estadisticas
@@ -127,7 +127,7 @@ drive_auth()
 img_id <- as_id("1Y7fc_zzy-rK0VmX3Nq4xjOmMtmapYy1d")
 drive_download(img_id, path = "imagen2.jpg", overwrite = TRUE)
 img <- image_read("imagen2.jpg")
-grid::grid.raster(img, width = unit(3, "inches"))
+grid::grid.raster(img, width = unit(1.8, "inches"))
 ```
 
 grafico
@@ -137,7 +137,7 @@ drive_auth()
 img_id <- as_id("1UblgawgRqZGmWfm42ez3RABEGmjoScEv")
 drive_download(img_id, path = "imagen3.jpg", overwrite = TRUE)
 img <- image_read("imagen3.jpg")
-grid::grid.raster(img, width = unit(5, "inches"))
+grid::grid.raster(img, width = unit(1.8, "inches"))
 ```
 
 
@@ -150,7 +150,7 @@ drive_auth()
 img_id <- as_id("14erin8gC_OIFLwM_OFlemTYEHOPFYya7")
 drive_download(img_id, path = "imagen.jpg", overwrite = TRUE)
 img <- image_read("imagen.jpg")
-grid::grid.raster(img, width = unit(5, "inches"))
+grid::grid.raster(img, width = unit(1.8, "inches"))
 ```
 
 Estadisticas
@@ -160,7 +160,7 @@ drive_auth()
 img_id <- as_id("1FQ50pEDaJGWb4_YYIaRcF_6uFKi6uEm2")
 drive_download(img_id, path = "imagen.jpg", overwrite = TRUE)
 img <- image_read("imagen.jpg")
-grid::grid.raster(img, width = unit(5, "inches"))
+grid::grid.raster(img, width = unit(1.8, "inches"))
 ```
 
 Grafico
@@ -170,7 +170,7 @@ drive_auth()
 img_id <- as_id("1PDRAb91qU1q0LobhP_7xsG6Yw3MoGhBe")
 drive_download(img_id, path = "imagen.jpg", overwrite = TRUE)
 img <- image_read("imagen.jpg")
-grid::grid.raster(img, width = unit(5, "inches"))
+grid::grid.raster(img, width = unit(1.8, "inches"))
 ```
 
 
@@ -184,7 +184,7 @@ img_id <- as_id("1Lna4yTQcsvxjozqEaO2Qa1hvyornnOTZ")
 drive_download(img_id, path = "imagen.jpg", overwrite = TRUE)
 
 img <- image_read("imagen.jpg")
-grid::grid.raster(img, width = unit(5, "inches"))
+grid::grid.raster(img, width = unit(1.8, "inches"))
 ```
 
 Estadisticas
@@ -194,7 +194,7 @@ drive_auth()
 img_id <- as_id("1gFZcJWDlx67_Pn3IxpPNu45zyj9NKfhP")
 drive_download(img_id, path = "imagen.jpg", overwrite = TRUE)
 img <- image_read("imagen.jpg")
-grid::grid.raster(img, width = unit(5, "inches"))
+grid::grid.raster(img, width = unit(1.8, "inches"))
 ```
 
 Grafico
@@ -204,7 +204,7 @@ drive_auth()
 img_id <- as_id("1o3IaCGIHL0_EThblAfX4FZTtpfNVGang")
 drive_download(img_id, path = "imagen.jpg", overwrite = TRUE)
 img <- image_read("imagen.jpg")
-grid::grid.raster(img, width = unit(5, "inches"))
+grid::grid.raster(img, width = unit(1.8, "inches"))
 ```
 
 
@@ -215,7 +215,7 @@ drive_auth()
 img_id <- as_id("1nkoMPvUjFgYPHrqG4MpaVnj3KGQzEU57")
 drive_download(img_id, path = "imagen4.jpg", overwrite = TRUE)
 img <- image_read("imagen4.jpg")
-grid::grid.raster(img, width = unit(5, "inches"))
+grid::grid.raster(img, width = unit(1.8, "inches"))
 ```
 
 
