@@ -1,0 +1,265 @@
+---
+title: "GERMINACIÓN DE SEMILLAS DE HABAS (*Vicia Faba*) BAJO EFECTO DE PRESENCIA Y AUSENCIA DE LUZ"
+author: "Arista Fernandez Hector, Perez Campos Elda, Tomapasca Lopez Frank, Vega Chavez Gimena y Vilchez Bustamante Erik"
+format:
+  html:
+   toc: true
+   toc-location: left
+   embed-resources: true
+   number-sections: true
+   output-file: index
+   theme: darkly
+   css: estilo.css
+editor_options: 
+  chunk_output_type: console
+---
+
+# INTRODUCCION
+
+La haba (*Vicia faba* L.) es una leguminosa originaria del centro y sur de Asia (Saavedra & Kehr, 2023). Es un cultivo anual que posee un tallo erecto y puede alcanzar altitudes de entre 1.5 a 2 m; (Arnaud & Georges, 2020); fue introducida en el continente americano en la época de la colonia en 1602 (Horque, 2004). En el Perú el cultivo de haba es de suma importancia; específicamente en la sierra del Perú; este cultivo se ha expandido en los últimos años hasta alcanzar un área de más de 34 000 ha (INIA - PERÚ, 2004). Solamente en agosto del 2024 la producción de habas alcanzó las 303 toneladas y se exportó a ocho países (Agraria.pe, 2024).
+En los últimos años se ha observado un gran crecimiento en la producción de habas debido a la alta demanda que esta generando; es por ello que se debe optimizar y perfeccionar las técnicas de producción especialmente analizando su comportamiento bajo diferentes condiciones de luz y oscuridad.
+
+# OBJETIVO
+
+Analizar el efecto de la luminosidad y la oscuridad en el proceso de germinación de semillas de haba (*Vicia faba* L.).
+
+# MATERIALES Y METODOS
+
+## Materiales
+- Semillas de Habas
+- Agua
+- Papel toalla
+- Taper de 1 Kg
+- Papel aluminio
+- Sulfato de cobre
+- Geringa de 20 ml
+- Pinza
+- Regla
+
+## Metodología
+
+Las semillas de haba (*Vicia faba* L.) fueron adquiridas en el mercado modelo de la ciudad de Chachapoyas y seleccionadas manualmente, priorizando aquellas que presentaban buen tamaño y un aspecto saludable.
+
+El experimento se desarrolló utilizando 12 recipientes plásticos, divididos en dos tratamientos: seis recipientes forrados internamente con papel aluminio para generar condiciones de oscuridad, y seis expuestos a la luz ambiental normal, con el objetivo de comparar el efecto de la iluminación sobre la germinación.
+
+Cada recipiente contenía 25 semillas, dispuestas sobre una capa de papel toalla que actuó como sustrato absorbente, permitiendo mantener una humedad adecuada para el proceso germinativo. La hidratación se realizó utilizando agua tratada con sulfato de cobre (2,2 g/L), con el fin de prevenir el desarrollo de microorganismos indeseados. El agua fue aplicada con una jeringa de 30 ml, asegurando una dosificación precisa y uniforme en todos los recipientes.
+
+Para identificar claramente los dos tratamientos, se elaboraron etiquetas en RStudio con las leyendas “Luz” y “Sin luz”, lo que facilitó un seguimiento organizado y preciso del comportamiento de cada grupo de semillas bajo sus respectivas condiciones de iluminación.
+
+Las semillas fueron evaluadas diariamente desde el día 0 hasta el día 8, registrando de manera continua la aparición de signos de germinación y cualquier cambio relevante en su desarrollo. Durante este periodo, se controló cuidadosamente el nivel de humedad y se mantuvieron constantes las condiciones ambientales, lo que permitió observar de forma clara el efecto de los tratamientos lumínicos sobre el comportamiento germinativo de las semillas.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(magick)
+
+# Nuevo ID del archivo de Google Drive
+file_id <- "1y92wmoJM0S6mBwTjIoI7AcvlWqg8NKhQ"
+
+# Construir la URL de descarga
+url <- sprintf("https://drive.google.com/uc?export=download&id=%s", file_id)
+
+# Descargar el archivo de imagen
+download.file(url, destfile = "imagen.jpg", mode = "wb")
+
+# Verifica que la imagen haya sido descargada
+if(file.exists("imagen.jpg")) {
+  img <- image_read("imagen.jpg")
+  plot(img)
+} else {
+  warning("La imagen no se descargó correctamente.")
+}
+
+```
+
+
+
+# RESULTADOS 
+
+La germinación de las semilla durante los siete dias se puede ver que cumple con las caracteristicas de una semilla germinada correctamente. Se muestra en ambas imagenes de las semillas que la germinacion se dio con éxito, tanto en presencia de luz y como tambien en ocuridad. 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(magick)
+
+mostrar_imagen <- function(file_id, nombre_archivo) {
+  url <- sprintf("https://drive.google.com/uc?export=download&id=%s", file_id)
+  download.file(url, destfile = nombre_archivo, mode = "wb")
+  if (file.exists(nombre_archivo)) {
+    img <- image_read(nombre_archivo)
+    plot(img)
+    title(main = nombre_archivo)
+  } else {
+    warning(sprintf("La imagen '%s' no se descargó correctamente.", nombre_archivo))
+  }
+}
+
+mostrar_imagen("1nbC1tntjVIHd_-CQd8x6OCU8-_Bx2N2o", "CON LUZ")
+mostrar_imagen("19QNUhM1dsV4OKJMSoxpoInQJIWKacAHx", "SIN LUZ")
+
+```
+
+**ORGANIZACION DE DATA**
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(googlesheets4)
+gs4_auth()
+url <- "https://docs.google.com/spreadsheets/d/1gvrqWVp9w-1kKHM7veKj8Sqg_-hOZBKLM2JqJ4HsXzc/edit?usp=sharing"
+datos <- read_sheet(url)
+head(datos)
+```
+**GERMINABILIDAD**
+
+Exploratorio 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(googledrive)
+library(magick)
+library(knitr)
+library(grid)
+drive_auth()
+img_id <- as_id("1lvoZzm2ssK89BEEADymyEiyJfv8YJJUF")
+drive_download(img_id, path = "imagen.jpg", overwrite = TRUE)
+img <- image_read("imagen.jpg")
+img_trim <- image_trim(img)
+grid::grid.raster(img, width = unit(5, "inches"))
+
+```
+
+En el gráfico se observa que en el eje X se representan dos tratamientos: con luz y sin luz, mientras que en el eje Y se muestra el valor de grp (porcentaje de germinación). Cada punto negro corresponde a una observación individual, es decir, a una réplica experimental.
+Los valores de germinación bajo condiciones de luz son elevados, cercanos al 100 %, y presentan baja variabilidad, lo que se refleja en la estrechez de la caja en el diagrama de cajas. En contraste, en ausencia de luz, aunque la germinación también se mantiene relativamente alta (entre 90 % y 95 %), se observa una mayor dispersión entre las réplicas, evidenciada por una caja más ancha.
+En consecuencia, se puede concluir que la presencia de luz favorece no solo un mayor porcentaje de germinación, sino también una mayor uniformidad en la respuesta de las semillas de haba, en comparación con las condiciones de oscuridad.
+
+
+Estadisticas
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+drive_auth()
+img_id <- as_id("1Y7fc_zzy-rK0VmX3Nq4xjOmMtmapYy1d")
+drive_download(img_id, path = "imagen2.jpg", overwrite = TRUE)
+img <- image_read("imagen2.jpg")
+img_trim <- image_trim(img)
+grid::grid.raster(img, width = unit(5, "inches"))
+```
+
+
+Grafico
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+drive_auth()
+img_id <- as_id("1UblgawgRqZGmWfm42ez3RABEGmjoScEv")
+drive_download(img_id, path = "imagen3.jpg", overwrite = TRUE)
+img <- image_read("imagen3.jpg")
+img_trim <- image_trim(img)
+grid::grid.raster(img, width = unit(5, "inches"))
+```
+
+El gráfico de barras compara la germinabilidad (%) entre las dos condiciones. Cada barra tiene una letra encima: "a" para Con luz y "b" para Sin luz, indicando un análisis estadístico. Como se puede apreciar la letras son diferentes (a ≠ b), por lo tanto  significa que hay una diferencia estadísticamente significativa entre los tratamientos.
+
+**INDICE DE SINCRONIZACION**
+
+Exploratorio
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+drive_auth()
+img_id <- as_id("14erin8gC_OIFLwM_OFlemTYEHOPFYya7")
+drive_download(img_id, path = "imagen.jpg", overwrite = TRUE)
+img <- image_read("imagen.jpg")
+img_trim <- image_trim(img)
+grid::grid.raster(img, width = unit(5, "inches"))
+```
+
+La gráfica  es un boxplot (diagrama de caja y bigotes) que compara el Índice de sincronización entre ambos tratamientos: "Con luz" y "Sin luz".
+Los dos tratamientos presentan medidas relativamente similares, aunque el grupo "Sin luz" muestra una mediana ligeramente más alta, lo que sugiere una germinación más sincronizada bajo esta condición. La dispersión de los datos es comparable en ambos grupos, lo que indica una variabilidad similar en la sincronización de la germinación. Sin embargo, en el tratamiento "Con luz" se observan algunos valores atípicos, lo que sugiere que en ciertas réplicas la sincronización fue notablemente diferente al resto, posiblemente por condiciones particulares o variabilidad natural.
+
+
+Estadisticas
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+drive_auth()
+img_id <- as_id("1FQ50pEDaJGWb4_YYIaRcF_6uFKi6uEm2")
+drive_download(img_id, path = "imagen.jpg", overwrite = TRUE)
+img <- image_read("imagen.jpg")
+img_trim <- image_trim(img)
+grid::grid.raster(img, width = unit(5, "inches"))
+```
+
+Grafico
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+drive_auth()
+img_id <- as_id("1PDRAb91qU1q0LobhP_7xsG6Yw3MoGhBe")
+drive_download(img_id, path = "imagen.jpg", overwrite = TRUE)
+img <- image_read("imagen.jpg")
+img_trim <- image_trim(img)
+grid::grid.raster(img, width = unit(5, "inches"))
+```
+
+El índice de sincronización indica o mide qué tan juntas en el tiempo germinan las semillas.
+
+Tanto con luz como sin luz el índice es similar. No hay diferencias estadísticas (letras "a" en ambos tratamientos). Por lo tanto, la luz no afecta la sincronización del proceso de germinación en habas.
+
+
+**TIEMPO MEDIO DE GERMINACION**
+
+Exploratorio
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+drive_auth()
+img_id <- as_id("1Lna4yTQcsvxjozqEaO2Qa1hvyornnOTZ")
+drive_download(img_id, path = "imagen.jpg", overwrite = TRUE)
+
+img <- image_read("imagen.jpg")
+img_trim <- image_trim(img)
+grid::grid.raster(img, width = unit(5, "inches"))
+```
+
+En este gráfico (Boxplot) nos muestra la distribución de los tiempos medios de germinación: Con luz: menor variabilidad y menor tiempo medio (~5.2 días), Sin luz: mayor variabilidad y un tiempo medio ligeramente mayor (~5.8 días).
+
+Estadisticas
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+drive_auth()
+img_id <- as_id("1gFZcJWDlx67_Pn3IxpPNu45zyj9NKfhP")
+drive_download(img_id, path = "imagen.jpg", overwrite = TRUE)
+img <- image_read("imagen.jpg")
+img_trim <- image_trim(img)
+grid::grid.raster(img, width = unit(5, "inches"))
+```
+
+
+Grafico
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+drive_auth()
+img_id <- as_id("1o3IaCGIHL0_EThblAfX4FZTtpfNVGang")
+drive_download(img_id, path = "imagen.jpg", overwrite = TRUE)
+img <- image_read("imagen.jpg")
+img_trim <- image_trim(img)
+grid::grid.raster(img, width = unit(5, "inches"))
+```
+
+En el gráfico  muestra la comparación directa de los promedios de tiempo de germinación: Se confirma que las semillas con luz germinan más rápido que sin luz. Comparten la misma letra”a” por lo cual no hay diferencia significativa entre tratamientos. Llegando a concluir que la luz podría favorecer ligeramente una germinación más rápida, aunque no significativamente.
+
+**PORCENTAJE DE GERMINACION**
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+drive_auth()
+img_id <- as_id("1nkoMPvUjFgYPHrqG4MpaVnj3KGQzEU57")
+drive_download(img_id, path = "imagen4.jpg", overwrite = TRUE)
+img <- image_read("imagen4.jpg")
+img_trim <- image_trim(img)
+grid::grid.raster(img, width = unit(5, "inches"))
+```
+
+En el gráfico de líneas, muestra el aumento del porcentaje de semillas germinadas al pasar los días. Con la presencia de luz hay una germinación más temprana y de mayor porcentaje final(100%); en cambio la germinación sin la presencia de luz es más lenta y el porcentaje final es ligeramente menor. Por lo tanto, la luz sí favorece una germinación más rápida.
+
+# **DISCUSION**
+
+En el experimento que se realizó donde se evaluó la germinación de semillas de haba con presencia de luz y oscuridad, observamos diferencias evidentes entre los tratamientos. En cuanto al porcentaje de germinación, las semillas evaluadas con presencia de luz alcanzaron valores al 100% ; mientras que las semillas con ausencia de luz su germinación fue ligeramente menor y mayor disponibilidad de los datos. El análisis estadístico mediante letras distintas a y b, confirma que esta diferencia es significativa. Respecto al índice de sincronización, los dos  tratamientos mostraron valores similares y no hubo diferencias estadísticas, por lo que se concluye que la luz no influye en la sincronización del proceso de germinación. En cuanto al tiempo medio de germinación, las semillas germinadas con luz mostraron un tiempo ligeramente menor y menos variabilidad en comparación con las sin luz. Aunque la diferencia no fue significativa, el patrón sugiere que la luz podría favorecer una germinación más rápida. Finalmente, el gráfico de líneas mostró que bajo condiciones de luz las semillas germinan antes y alcanzan un porcentaje final de germinación más alto. Los resultados evidencian que la presencia de  luz  favorece la  germinación de las semillas de haba, especialmente en términos de rapidez  y más  uniformidad
+
+# **REFERENCIAS**
+
+- Agraria.pe. (03 de Octubre de 2024). Exportaciones peruanas de habas crecieron 44% en volumen en agosto. Obtenido de Agraria.pe: https://agraria.pe/noticias/exportaciones-peruanas-de-habas-crecieron-44-en-volumen-en-a-37215#:~:text=(Agraria.pe)%20Las%20exportaciones,igual%20mes%20del%20a%C3%B1o%20anterior.
+- Arnaud, R., & Georges, F. (24 de Abril de 2020). Descripción general de Bruchus rufimanus Boheman 1833 (Coleoptera: Chrysomelidae): Biología, ecología química y oportunidades semioquímicas en programas de manejo integrado de plagas. Obtenido de Los frijoles y los guisante: https://doi.org/10.1016/j.cropro.2020.105411
+- Horque, R. (Febrero de 2004). Cultivo del haba. Obtenido de INIA - Perú: https://repositorio.inia.gob.pe/server/api/core/bitstreams/715ee52d-6df5-4fdb-886f-f334bf6a8f99/content
+- INIA - PERÚ. (Junio de 2004). Haba INIA 401 - Cusco. Obtenido de INIA: https://repositorio.inia.gob.pe/server/api/core/bitstreams/b7cae603-cf90-42c8-8494-a3cae909a5d2/content
+- Lepri, A., Kazmi, H., Bertolotti, G., Longo, C., Occhigrossi, S., Quattrocchi, L., & De Vivo, M. (25 de Abril de 2024). Un bucle de retroalimentación entre giberelinas y represores transcripcionales DOF desempeña un papel crucial en la modulación de la germinación de semillas independiente de la luz. Obtenido de Science: https://doi.org/10.1016/j.xplc.2025.101262
+- Saavedra, G., & Kehr, E. (2023). Manejo y especies hortícolas aptas para la agroindustria en la Región de La Araucanía. Obtenido de INIA - Chile: https://hdl.handle.net/20.500.14001/68961 
+
