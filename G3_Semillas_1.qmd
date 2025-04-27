@@ -14,7 +14,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-# INTRODUCCION
+# INTRODUCCIÓN
 
 La haba (*Vicia faba* L.) es una leguminosa originaria del centro y sur de Asia (Saavedra & Kehr, 2023). Es un cultivo anual que posee un tallo erecto y puede alcanzar altitudes de entre 1.5 a 2 m; (Arnaud & Georges, 2020); fue introducida en el continente americano en la época de la colonia en 1602 (Horque, 2004). En el Perú el cultivo de haba es de suma importancia; específicamente en la sierra del Perú; este cultivo se ha expandido en los últimos años hasta alcanzar un área de más de 34 000 ha (INIA - PERÚ, 2004). Solamente en agosto del 2024 la producción de habas alcanzó las 303 toneladas y se exportó a ocho países (Agraria.pe, 2024).
 En los últimos años se ha observado un gran crecimiento en la producción de habas debido a la alta demanda que esta generando; es por ello que se debe optimizar y perfeccionar las técnicas de producción especialmente analizando su comportamiento bajo diferentes condiciones de luz y oscuridad.
@@ -23,7 +23,7 @@ En los últimos años se ha observado un gran crecimiento en la producción de h
 
 Analizar el efecto de la luminosidad y la oscuridad en el proceso de germinación de semillas de haba (*Vicia faba* L.).
 
-# MATERIALES Y METODOS
+# MATERIALES Y MÉTODOS
 
 ## Materiales
 - Semillas de Habas
@@ -71,10 +71,9 @@ if(file.exists("imagen.jpg")) {
 ```
 
 
-
 # RESULTADOS 
 
-La germinación de las semilla durante los siete dias se puede ver que cumple con las caracteristicas de una semilla germinada correctamente. Se muestra en ambas imagenes de las semillas que la germinacion se dio con éxito, tanto en presencia de luz y como tambien en ocuridad. 
+La germinación de las semillas durante los siete días muestra que se cumplen las características de una semilla germinada correctamente. Se observa en ambas imágenes que la germinación se dio con éxito, tanto en presencia de luz como en oscuridad.
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 library(magick)
@@ -96,7 +95,7 @@ mostrar_imagen("19QNUhM1dsV4OKJMSoxpoInQJIWKacAHx", "SIN LUZ")
 
 ```
 
-**ORGANIZACION DE DATA**
+**ORGANIZACIÓNN DE DATA**
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 library(googlesheets4)
 gs4_auth()
@@ -122,12 +121,13 @@ grid::grid.raster(img, width = unit(5, "inches"))
 
 ```
 
-En el gráfico se observa que en el eje X se representan dos tratamientos: con luz y sin luz, mientras que en el eje Y se muestra el valor de grp (porcentaje de germinación). Cada punto negro corresponde a una observación individual, es decir, a una réplica experimental.
-Los valores de germinación bajo condiciones de luz son elevados, cercanos al 100 %, y presentan baja variabilidad, lo que se refleja en la estrechez de la caja en el diagrama de cajas. En contraste, en ausencia de luz, aunque la germinación también se mantiene relativamente alta (entre 90 % y 95 %), se observa una mayor dispersión entre las réplicas, evidenciada por una caja más ancha.
+En el gráfico se observa que en el eje X se representan dos tratamientos: con luz y sin luz, mientras que en el eje Y se muestra el valor de GRP (porcentaje de germinación). Cada punto negro corresponde a una observación individual, es decir, a una réplica experimental.
+
+Los valores de germinación bajo condiciones de luz son elevados, cercanos al 100 %, y presentan baja variabilidad, lo que se refleja en la estrechez de la caja en el diagrama de cajas. En contraste, en ausencia de luz, aunque la germinación también se mantiene relativamente alta (entre el 90 % y el 95 %), se observa una mayor dispersión entre las réplicas, evidenciada por una caja más ancha.
+
 En consecuencia, se puede concluir que la presencia de luz favorece no solo un mayor porcentaje de germinación, sino también una mayor uniformidad en la respuesta de las semillas de haba, en comparación con las condiciones de oscuridad.
 
-
-Estadisticas
+Estadísticas
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 drive_auth()
@@ -139,7 +139,7 @@ grid::grid.raster(img, width = unit(5, "inches"))
 ```
 
 
-Grafico
+Gráfico
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 drive_auth()
@@ -150,9 +150,10 @@ img_trim <- image_trim(img)
 grid::grid.raster(img, width = unit(5, "inches"))
 ```
 
-El gráfico de barras compara la germinabilidad (%) entre las dos condiciones. Cada barra tiene una letra encima: "a" para Con luz y "b" para Sin luz, indicando un análisis estadístico. Como se puede apreciar la letras son diferentes (a ≠ b), por lo tanto  significa que hay una diferencia estadísticamente significativa entre los tratamientos.
+El gráfico de barras compara la germinabilidad (%) entre las dos condiciones. Cada barra presenta una letra encima: "a" para Con luz y "b" para Sin luz, lo que indica que se ha realizado un análisis estadístico. Como se puede apreciar, las letras son diferentes (a ≠ b); por lo tanto, esto significa que existe una diferencia estadísticamente significativa entre los tratamientos.
 
-**INDICE DE SINCRONIZACION**
+
+**ÍNDICE DE SINCRONIZACIÓN**
 
 Exploratorio
 
@@ -165,11 +166,11 @@ img_trim <- image_trim(img)
 grid::grid.raster(img, width = unit(5, "inches"))
 ```
 
-La gráfica  es un boxplot (diagrama de caja y bigotes) que compara el Índice de sincronización entre ambos tratamientos: "Con luz" y "Sin luz".
-Los dos tratamientos presentan medidas relativamente similares, aunque el grupo "Sin luz" muestra una mediana ligeramente más alta, lo que sugiere una germinación más sincronizada bajo esta condición. La dispersión de los datos es comparable en ambos grupos, lo que indica una variabilidad similar en la sincronización de la germinación. Sin embargo, en el tratamiento "Con luz" se observan algunos valores atípicos, lo que sugiere que en ciertas réplicas la sincronización fue notablemente diferente al resto, posiblemente por condiciones particulares o variabilidad natural.
+La gráfica es un boxplot (diagrama de caja y bigotes) que compara el Índice de sincronización entre ambos tratamientos: "Con luz" y "Sin luz".
+Ambos tratamientos presentan medidas relativamente similares, aunque el grupo "Sin luz" muestra una mediana ligeramente más alta, lo que sugiere una germinación más sincronizada bajo esta condición. La dispersión de los datos es comparable en ambos grupos, indicando una variabilidad similar en la sincronización de la germinación.
+Sin embargo, en el tratamiento "Con luz" se observan algunos valores atípicos, lo que sugiere que en ciertas réplicas la sincronización fue notablemente diferente respecto al resto, posiblemente debido a condiciones particulares o a la variabilidad natural.
 
-
-Estadisticas
+Estadísticas
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 drive_auth()
@@ -180,7 +181,7 @@ img_trim <- image_trim(img)
 grid::grid.raster(img, width = unit(5, "inches"))
 ```
 
-Grafico
+Gráfico
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 drive_auth()
@@ -191,12 +192,11 @@ img_trim <- image_trim(img)
 grid::grid.raster(img, width = unit(5, "inches"))
 ```
 
-El índice de sincronización indica o mide qué tan juntas en el tiempo germinan las semillas.
+El índice de sincronización mide qué tan juntas en el tiempo germinan las semillas.
+Tanto en condiciones de luz como de oscuridad, el índice es similar. No se observan diferencias estadísticas entre los tratamientos, como lo indica la presencia de la misma letra ("a") en ambos grupos.
+Por lo tanto, se concluye que la luz no afecta la sincronización del proceso de germinación en habas.
 
-Tanto con luz como sin luz el índice es similar. No hay diferencias estadísticas (letras "a" en ambos tratamientos). Por lo tanto, la luz no afecta la sincronización del proceso de germinación en habas.
-
-
-**TIEMPO MEDIO DE GERMINACION**
+**TIEMPO MEDIO DE GERMINACIÓN**
 
 Exploratorio
 
@@ -212,7 +212,7 @@ grid::grid.raster(img, width = unit(5, "inches"))
 
 En este gráfico (Boxplot) nos muestra la distribución de los tiempos medios de germinación: Con luz: menor variabilidad y menor tiempo medio (~5.2 días), Sin luz: mayor variabilidad y un tiempo medio ligeramente mayor (~5.8 días).
 
-Estadisticas
+Estadísticas
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 drive_auth()
@@ -224,7 +224,7 @@ grid::grid.raster(img, width = unit(5, "inches"))
 ```
 
 
-Grafico
+Gráfico
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 drive_auth()
@@ -237,7 +237,7 @@ grid::grid.raster(img, width = unit(5, "inches"))
 
 En el gráfico  muestra la comparación directa de los promedios de tiempo de germinación: Se confirma que las semillas con luz germinan más rápido que sin luz. Comparten la misma letra”a” por lo cual no hay diferencia significativa entre tratamientos. Llegando a concluir que la luz podría favorecer ligeramente una germinación más rápida, aunque no significativamente.
 
-**PORCENTAJE DE GERMINACION**
+**PORCENTAJE DE GERMINACIÓN**
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 drive_auth()
@@ -248,11 +248,22 @@ img_trim <- image_trim(img)
 grid::grid.raster(img, width = unit(5, "inches"))
 ```
 
-En el gráfico de líneas, muestra el aumento del porcentaje de semillas germinadas al pasar los días. Con la presencia de luz hay una germinación más temprana y de mayor porcentaje final(100%); en cambio la germinación sin la presencia de luz es más lenta y el porcentaje final es ligeramente menor. Por lo tanto, la luz sí favorece una germinación más rápida.
+El gráfico de líneas muestra el aumento del porcentaje de semillas germinadas a lo largo de los días.
+En presencia de luz, la germinación es más temprana y alcanza un porcentaje final mayor (100 %); en cambio, sin la presencia de luz, la germinación es más lenta y el porcentaje final es ligeramente menor.
+Por lo tanto, se concluye que la luz favorece una germinación más rápida.
 
-# **DISCUSION**
+# **DISCUSIÓN**
 
-En el experimento que se realizó donde se evaluó la germinación de semillas de haba con presencia de luz y oscuridad, observamos diferencias evidentes entre los tratamientos. En cuanto al porcentaje de germinación, las semillas evaluadas con presencia de luz alcanzaron valores al 100% ; mientras que las semillas con ausencia de luz su germinación fue ligeramente menor y mayor disponibilidad de los datos. El análisis estadístico mediante letras distintas a y b, confirma que esta diferencia es significativa. Respecto al índice de sincronización, los dos  tratamientos mostraron valores similares y no hubo diferencias estadísticas, por lo que se concluye que la luz no influye en la sincronización del proceso de germinación. En cuanto al tiempo medio de germinación, las semillas germinadas con luz mostraron un tiempo ligeramente menor y menos variabilidad en comparación con las sin luz. Aunque la diferencia no fue significativa, el patrón sugiere que la luz podría favorecer una germinación más rápida. Finalmente, el gráfico de líneas mostró que bajo condiciones de luz las semillas germinan antes y alcanzan un porcentaje final de germinación más alto. Los resultados evidencian que la presencia de  luz  favorece la  germinación de las semillas de haba, especialmente en términos de rapidez  y más  uniformidad
+En el experimento realizado para evaluar la germinación de semillas de haba bajo condiciones de luz y oscuridad, se observaron diferencias evidentes entre los tratamientos.
+En cuanto al porcentaje de germinación, las semillas expuestas a la presencia de luz alcanzaron valores cercanos al 100 %, mientras que las semillas en ausencia de luz presentaron una germinación ligeramente menor y una mayor dispersión en los datos. El análisis estadístico, representado mediante letras distintas ("a" y "b"), confirma que esta diferencia es significativa.
+
+Respecto al índice de sincronización, ambos tratamientos mostraron valores similares y no se encontraron diferencias estadísticas, por lo que se concluye que la luz no influye en la sincronización del proceso de germinación.
+
+En relación con el tiempo medio de germinación, las semillas germinadas con luz mostraron un tiempo ligeramente menor y una menor variabilidad en comparación con aquellas germinadas sin luz. Aunque esta diferencia no fue significativa, el patrón observado sugiere que la luz podría favorecer una germinación más rápida.
+
+Finalmente, el gráfico de líneas mostró que, bajo condiciones de luz, las semillas germinan antes y alcanzan un porcentaje final de germinación más alto.
+
+En conjunto, los resultados evidencian que la presencia de luz favorece la germinación de las semillas de haba, especialmente en términos de rapidez y mayor uniformidad.
 
 # **REFERENCIAS**
 
