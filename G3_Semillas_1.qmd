@@ -276,7 +276,7 @@ Finalmente, el gráfico de líneas mostró que, bajo condiciones de luz, las sem
 
 En conjunto, los resultados evidencian que la presencia de luz favorece la germinación de las semillas de haba, especialmente en términos de rapidez y mayor uniformidad.
 
-# CONCLUCIONES 
+# CONCLUSIONES 
 
 Las semillas expuestas a la luz presentaron un porcentaje de germinación más alto (100%) en comparación con las semillas en oscuridad, que tuvieron un porcentaje ligeramente menor, evidenciando que la luz favorece el proceso de germinación en Vicia faba.
 
