@@ -21,7 +21,18 @@ En los últimos años se ha observado un gran crecimiento en la producción de h
 
 # OBJETIVO
 
+## Objetivo general
+
 Analizar el efecto de la luminosidad y la oscuridad en el proceso de germinación de semillas de haba (*Vicia faba* L.).
+
+## Objetivos especificos
+
+- Comparar el tiempo medio de germinación entre semillas expuestas a luz y aquellas en ausencia de luz.
+
+- Determinar el índice de sincronización de la germinación de semillas de haba en ambos tratamientos (luz y oscuridad).
+
+- Analizar si existen diferencias significativas en la germinación de semillas de haba debido a la presencia o ausencia de luz.
+
 
 # MATERIALES Y MÉTODOS
 
@@ -267,15 +278,15 @@ En conjunto, los resultados evidencian que la presencia de luz favorece la germi
 
 # **REFERENCIAS**
 
-Agraria.pe. (2024, 3 de octubre). Exportaciones peruanas de habas crecieron 44% en volumen en agosto. Agraria.pe. https://agraria.pe/noticias/exportaciones-peruanas-de-habas-crecieron-44-en-volumen-en-a-37215#:~:text=(Agraria.pe)%20Las%20exportaciones,igual%20mes%20del%20a%C3%B1o%20anterior
+Agraria.pe. (2024). Exportaciones peruanas de habas crecieron 44% en volumen en agosto. Agraria.pe. https://agraria.pe/noticias/exportaciones-peruanas-de-habas-crecieron-44-en-volumen-en-a-37215#:~:text=(Agraria.pe)%20Las%20exportaciones,igual%20mes%20del%20a%C3%B1o%20anterior
 
-Arnaud, R., & Georges, F. (2020, 24 de abril). Descripción general de Bruchus rufimanus Boheman 1833 (Coleoptera: Chrysomelidae): Biología, ecología química y oportunidades semioquímicas en programas de manejo integrado de plagas. Los frijoles y los guisantes. https://doi.org/10.1016/j.cropro.2020.105411
+Arnaud, R., & Georges, F. (2020). Descripción general de Bruchus rufimanus Boheman 1833 (Coleoptera: Chrysomelidae): Biología, ecología química y oportunidades semioquímicas en programas de manejo integrado de plagas. Los frijoles y los guisantes. https://doi.org/10.1016/j.cropro.2020.105411
 
-Horque, R. (2004, febrero). Cultivo del haba. INIA - Perú. https://repositorio.inia.gob.pe/server/api/core/bitstreams/715ee52d-6df5-4fdb-886f-f334bf6a8f99/content
+Horque, R. (2004). Cultivo del haba. INIA - Perú. https://repositorio.inia.gob.pe/server/api/core/bitstreams/715ee52d-6df5-4fdb-886f-f334bf6a8f99/content
 
-INIA - Perú. (2004, junio). Haba INIA 401 - Cusco. INIA. https://repositorio.inia.gob.pe/server/api/core/bitstreams/b7cae603-cf90-42c8-8494-a3cae909a5d2/content
+INIA - Perú. (2004). Haba INIA 401 - Cusco. INIA. https://repositorio.inia.gob.pe/server/api/core/bitstreams/b7cae603-cf90-42c8-8494-a3cae909a5d2/content
 
-Lepri, A., Kazmi, H., Bertolotti, G., Longo, C., Occhigrossi, S., Quattrocchi, L., & De Vivo, M. (2024, 25 de abril). Un bucle de retroalimentación entre giberelinas y represores transcripcionales DOF desempeña un papel crucial en la modulación de la germinación de semillas independiente de la luz. Science. https://doi.org/10.1016/j.xplc.2025.101262
+Lepri, A., Kazmi, H., Bertolotti, G., Longo, C., Occhigrossi, S., Quattrocchi, L., & De Vivo, M. (2024). Un bucle de retroalimentación entre giberelinas y represores transcripcionales DOF desempeña un papel crucial en la modulación de la germinación de semillas independiente de la luz. Science. https://doi.org/10.1016/j.xplc.2025.101262
 
 Saavedra, G., & Kehr, E. (2023). Manejo y especies hortícolas aptas para la agroindustria en la Región de La Araucanía. INIA - Chile. https://hdl.handle.net/20.500.14001/68961
 
